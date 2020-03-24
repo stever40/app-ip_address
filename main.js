@@ -39,7 +39,7 @@ class IpAddress {
     * @param {string} cidrStr - The IPv4 subnet expressed
     *                 in CIDR format.
     * @param {callback} callback - A callback function.
-    * @type {Object} (firstIpAddress) - An object with two prooperties, ipv4 and ipv6
+    * @return {object} (firstIpAddress) - An object with two prooperties, ipv4 and ipv6
     *                              whose values are strings 
     */
     getFirstIpAddress(cidrStr, callback) {
@@ -67,7 +67,7 @@ class IpAddress {
         } else {
             // If the passed CIDR is valid, call the object's toArray() method.
             // Notice the destructering assignment syntax to get the value of the first array's element.
-            [firstIpAddress] = cidr.toArray(options);
+            [firstIpAddress.ipv4] = cidr.toArray(options);
             firstIpAddress.ipv6 = getIpv4MappedIpv6Address(firstIpAddress.ipv4);
         }
         // Call the passed callback function.
